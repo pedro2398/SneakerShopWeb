@@ -1,9 +1,8 @@
 "use server"
-
 import { revalidatePath } from "next/cache"
+const url = "http://localhost:8080/usuario"
 
-export async function Create(data){
-    const url = "http://localhost:8080/usuario"
+export async function CreateUser(data){
 
     const options = {
         method: "POST", 
@@ -16,6 +15,21 @@ export async function Create(data){
     const resp = await fetch(url, options)
 
     if (resp.status !== 201) return { error : "erro ao cadastrar"}
+
+    revalidatePath("/usuario")
+
+}
+
+export async function deleteUsuario(id) {
+    const options = {
+        method: "DELETE"
+    }
+
+    const resp = await fetch(url + "/" + id, options)
+
+    if (resp.status !== 204) {
+        return {erro: "Error ao apagar"}
+    }
 
     revalidatePath("/usuario")
 

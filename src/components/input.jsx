@@ -1,4 +1,4 @@
-export default function InputText({label, type, ...props}){
+export default function Input({label, type, ...props}){
     return (
         <div className="flex flex-col gap-1">
             <label htmlFor="">{label}</label>
