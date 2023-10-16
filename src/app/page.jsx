@@ -1,5 +1,5 @@
 import NavBar from "@/components/navbar";
-import ProdutoHome from "@/app/produtos/produtosHome";
+import ProdutoHome from "./produtos/page";
 
 export default async function Home() {
   
@@ -14,14 +14,15 @@ export default async function Home() {
 
     return await produtos.json()
   }
-  
-  const produtos =  await buscaProdutos()  
+
+  const produtos =  await buscaProdutos()
   
   return (  
    <>
       <NavBar/>
       <main className="flex flex-wrap justify-between gap-5 bg-gray-900 mt-4 mx-auto rounded-xl max-w-[80%] px-3 py-3">    
           {produtos.map(produto => ProdutoHome( produto ))}
+          {console.log(produtos)}
     </main>
    </>  
    )

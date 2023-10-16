@@ -20,7 +20,7 @@ export async function CreateUser(data){
 
 }
 
-export async function deleteUsuario(id) {
+export async function DeleteUsuario(id) {
     const options = {
         method: "DELETE"
     }
@@ -33,4 +33,14 @@ export async function deleteUsuario(id) {
 
     revalidatePath("/usuario")
 
+}
+
+export async function GetUsuario(id) {
+    const resp = await fetch(url + "/" + id )
+
+    if(resp.status !== 200) {
+        return {error: "Usuario não encontrado"}
+    } 
+
+    return await resp.json()
 }

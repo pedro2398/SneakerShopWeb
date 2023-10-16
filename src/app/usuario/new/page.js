@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 export default function Usuario() {
     const { push } = useRouter()
     
-    async function Submit(formData){
+    async function Submit(formData) {
         const resp = await CreateUser(formData)
 
         if (resp?.error) {
