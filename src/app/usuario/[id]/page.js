@@ -5,7 +5,7 @@ import Form from "./form";
 export default async function Usuario({ params }) {
 
     const usuario = await GetUsuario(params.id)
-    console.log(usuario)
+    
     return (
         <>
             <NavBar />

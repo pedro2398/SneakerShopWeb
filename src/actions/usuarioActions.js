@@ -2,7 +2,7 @@
 import { revalidatePath } from "next/cache"
 const url = "http://localhost:8080/usuario"
 
-export async function CreateUser(data){
+export async function CreateUsuario(data){
 
     const options = {
         method: "POST", 
@@ -44,3 +44,21 @@ export async function GetUsuario(id) {
 
     return await resp.json()
 }
+
+export async function UpdateUsuario(usuario) {
+    const options = {
+        method: "PUT", 
+        body: JSON.stringify(usuario),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    }
+
+    const resp = await fetch(url + "/" + usuario.id, options)
+
+    if(resp.status !== 200) {
+        return {error: "Erro ao casdastrar"}
+    }
+
+    revalidatePath("/usuario")
+}   
